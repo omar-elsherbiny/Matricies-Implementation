@@ -1,5 +1,5 @@
 import turtle
-from main import Matrix
+from MatrixObj import Matrix
 from math import sin, cos, radians
 
 turtle.title(f'Render 1 | Matricies                                                    ')

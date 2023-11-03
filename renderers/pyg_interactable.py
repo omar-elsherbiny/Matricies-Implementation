@@ -1,7 +1,7 @@
 #Imports
 import pygame as pyg
 from sys import exit as syexit
-from main import Matrix
+from MatrixObj import Matrix
 from math import sin, cos, radians
 
 pyg.init()
