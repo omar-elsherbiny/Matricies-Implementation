@@ -19,7 +19,7 @@ def main():
     clock = pyg.time.Clock()
 
     S=100
-    Gx,Gy,Gz=10, 0, 0
+    Gx,Gy,Gz=45, 0, 0
     pointx=Matrix('3x1', [[1],[0],[0]])*S
     pointy=Matrix('3x1', [[0],[1],[0]])*S
     pointz=Matrix('3x1', [[0],[0],[1]])*S
@@ -42,6 +42,7 @@ def main():
                     dragging=True
                     prev_coords=event.pos
                 if event.button == 3:
+                    Gx,Gy,Gz=45, 0, 0
                     transpose = not transpose
             elif event.type == pyg.MOUSEBUTTONUP:
                 if event.button == 1:
@@ -55,8 +56,8 @@ def main():
         else :
             Ax = Gx
             Ay = Gy
-            Gx += 1
-            Gy += 1
+            Gx += 0
+            Gy += 0
             Gz += 1
         rotX=Matrix('3x3',[[1,0,0],[0,cos(radians(Ax)),-sin(radians(Ax))],[0,sin(radians(Ax)),cos(radians(Ax))]])
         rotY=Matrix('3x3',[[cos(radians(Ay)),0,-sin(radians(Ay))],[0,1,0],[sin(radians(Ay)),0,cos(radians(Ay))]])
