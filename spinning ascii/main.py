@@ -19,7 +19,7 @@ for r in range(s):
 
 def z_to_lightness(z):
     ls = config['lightness_string']
-    return ls[round(z*len(ls)/s)]
+    return ls[round(z*(len(ls)-1)/s)]
 
 Ax,Ay,Az=0,0,0
 while True:
@@ -28,12 +28,15 @@ while True:
     rotY=Matrix('3x3',[[cos(radians(Ay)),0,-sin(radians(Ay))],[0,1,0],[sin(radians(Ay)),0,cos(radians(Ay))]])
     rotZ=Matrix('3x3',[[cos(radians(Az)),-sin(radians(Az)),0],[sin(radians(Az)),cos(radians(Az)),0],[0,0,1]])
     rot=rotX@rotY@rotZ
+    res = [rot@m for m in marr]
+    res.sort(key=lambda x: x.matrix[1][0])
     for r in range(s):
-        rs=''
+        rs=[' ' for i in range(s)]
         for c in range(s):
-           rs += z_to_lightness(marr[s*r+c].matrix[2][0])
-        print(rs)
+            rs[round(res[s*r+c].matrix[0][0])] = z_to_lightness(res[s*r+c].matrix[2][0])
+           #rs+= z_to_lightness((rot@marr[s*r+c]).matrix[2][0]+round(s/2))
+        print(''.join(rs))
     Ax += config['rot_X']
     Ay += config['rot_Y']
     Az += config['rot_Z']
-    sleep(0.5)
+    sleep(0.2)
