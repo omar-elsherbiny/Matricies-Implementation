@@ -19,7 +19,7 @@ def main():
     clock = pyg.time.Clock()
 
     S=100
-    Gx,Gy,Gz=0, 0, 0
+    Gx,Gy,Gz=10, 0, 0
     pointx=Matrix('3x1', [[1],[0],[0]])*S
     pointy=Matrix('3x1', [[0],[1],[0]])*S
     pointz=Matrix('3x1', [[0],[0],[1]])*S
